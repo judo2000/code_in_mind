@@ -19,6 +19,7 @@
   "homepage": "https://github.com/judo2000/code_in_mind#readme",
   "dependencies": {
     "apollo-server-express": "^3.6.7",
+    "bcrypt": "^5.0.1",
     "express": "^4.17.3",
     "graphql": "^16.3.0"
   }
