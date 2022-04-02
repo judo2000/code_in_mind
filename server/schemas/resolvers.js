@@ -31,6 +31,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    enrollments: async (parent, { input }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError("Not logged in");
+      }
+      if (context.user) {
+        const enrollment = await User.findOneAndUpdate({ enrollments: input });
+        return enrollment;
+      }
+    },
   },
 };
 module.exports = resolvers;
