@@ -1,13 +1,9 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
+const Course = require("./Course");
 
 const userSchema = new Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     firstName: {
       type: String,
       required: true,
@@ -26,6 +22,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    enrollments: [Course],
   },
   // set this to use virtual below
   {
