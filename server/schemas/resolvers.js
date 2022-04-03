@@ -21,7 +21,7 @@ const resolvers = {
     },
     addCourse: async (parent, args) => {
       const course = await Course.create(args);
-      return {course};
+      return course;
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -35,15 +35,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    enrollments: async (parent, { input }, context) => {
-      if (!context.user) {
-        throw new AuthenticationError("Not logged in");
-      }
-      if (context.user) {
-        const enrollment = await User.findOneAndUpdate({ enrollments: input });
-        return enrollment;
-      }
-    },
+    // enrollments: async (parent, { input }, context) => {
+    //   if (!context.user) {
+    //     throw new AuthenticationError("Not logged in");
+    //   }
+    //   if (context.user) {
+    //     const enrollment = await User.findOneAndUpdate({ enrollments: input });
+    //     return enrollment;
+    //   }
+    // },
   },
 };
 module.exports = resolvers;
