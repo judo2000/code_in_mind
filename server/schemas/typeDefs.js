@@ -9,9 +9,10 @@ const typeDefs = gql`
   }
 
   type Course {
-    courseID: ID!
+    
     courseTitle: String!
     description: String!
+    creator: String!
   }
 
   type Auth {
@@ -20,9 +21,10 @@ const typeDefs = gql`
   }
 
   input courseInput {
-    courseID: ID!
+    
     courseTitle: String!
     description: String!
+    creator: String!
   }
 
   type Query {
@@ -38,6 +40,13 @@ const typeDefs = gql`
       password: String!
     ): Auth
     enrollments(input: courseInput!): User
+    addCourse(
+      
+      courseTitle: String!
+      description: String!
+      creator: String!
+      
+    ): Course
   }
 `;
 // export the typeDef

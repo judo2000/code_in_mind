@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const Course = require("./Course");
+// const Course = require("./Course");
 
 const userSchema = new Schema(
   {
@@ -22,7 +22,11 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    enrollments: [Course],
+    createdCourses: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Course',
+
+    }],
   },
   // set this to use virtual below
   {
