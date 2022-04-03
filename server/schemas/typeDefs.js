@@ -5,11 +5,10 @@ const typeDefs = gql`
     email: String
     firstName: String
     lastName: String
-    enrollments: [Course]
   }
 
   type Course {
-    
+    _id: ID
     courseTitle: String!
     description: String!
     creator: String!
@@ -18,13 +17,6 @@ const typeDefs = gql`
   type Auth {
     token: String
     user: User
-  }
-
-  input courseInput {
-    
-    courseTitle: String!
-    description: String!
-    creator: String!
   }
 
   type Query {
@@ -39,13 +31,10 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    enrollments(input: courseInput!): User
     addCourse(
-      
       courseTitle: String!
       description: String!
       creator: String!
-      
     ): Course
   }
 `;
