@@ -11,7 +11,7 @@ const typeDefs = gql`
     _id: ID
     courseTitle: String!
     description: String!
-    creator: String!
+    creator: [User]
   }
 
   type Auth {
