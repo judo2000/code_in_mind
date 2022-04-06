@@ -1,10 +1,12 @@
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
 import CodeIcon from "@mui/icons-material/Code";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import Typography from "@mui/material/Typography";
 
 const style = {
   appBar: {
