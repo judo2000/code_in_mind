@@ -22,5 +22,8 @@
   "homepage": "https://github.com/judo2000/code_in_mind#readme",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "emailjs": "^3.8.0"
   }
 }
