@@ -17,7 +17,7 @@ const resolvers = {
       return users;
     },
     courses: async () => {
-      const courses = await Course.find({});
+      const courses = await Course.find({}).populate("creator");
       return courses;
     },
   },
