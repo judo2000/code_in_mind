@@ -17,7 +17,7 @@ export const Login = () => {
           onCompleted: (data) => {
             console.log(data);
             localStorage.setItem("token", data?.login?.token);
-            navigate("/");
+            navigate("/dashboard");
           },
         });
       }}
@@ -28,6 +28,8 @@ export const Login = () => {
       render={({ values, handleSubmit, form }) => {
         return (
           <div>
+            <br/>
+            <br/>
             {/*<h1>FirstName</h1>*/}
             {/*<Field*/}
             {/*	name='firstName'*/}
