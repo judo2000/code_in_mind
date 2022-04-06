@@ -49,7 +49,7 @@ function App() {
             Home
           </Route>
           <Route exact path="/courses" element={<Courses />}>
-            About
+            Courses
           </Route>
           <Route exact path="/about" element={<About />}>
             About
