@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { GET_COURSES } from "../utils/queries";
+import Spinner from "./Progress";
 
 import * as React from "react";
 import PropTypes from "prop-types";
@@ -44,7 +45,7 @@ export function GridTemplateColumns() {
   const courseData = data?.courses || {};
 
   return loading ? (
-    <h2>LOADING...</h2>
+    <Spinner />
   ) : (
     <div style={{ width: "100%" }}>
       <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
