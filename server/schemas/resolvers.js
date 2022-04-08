@@ -13,7 +13,7 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     users: async () => {
-      const users = await User.find({});
+      const users = await User.find({}).populate("createdCourses");
       return users;
     },
     courses: async () => {

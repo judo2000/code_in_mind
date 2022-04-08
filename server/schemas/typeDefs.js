@@ -5,6 +5,7 @@ const typeDefs = gql`
     email: String
     firstName: String
     lastName: String
+    createdCourses: [Course]
   }
 
   type Course {

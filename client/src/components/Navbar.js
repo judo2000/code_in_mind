@@ -34,6 +34,10 @@ const Navbar = () => {
     window.location.href = "/";
     handleClose();
   };
+  const goDashboard = () => {
+    window.location.href = "/dashboard";
+    handleClose();
+  };
   const goCourses = () => {
     window.location.href = "/courses";
     handleClose();
@@ -83,6 +87,7 @@ const Navbar = () => {
         >
           <MenuItem onClick={() => goHome()}>Home</MenuItem>
           <MenuItem onClick={() => goCourses()}>Courses</MenuItem>
+          <MenuItem onClick={() => goDashboard()}>Dashboard</MenuItem>
           <MenuItem onClick={() => goAbout()}>About</MenuItem>
           <MenuItem onClick={() => goContact()}>Contact</MenuItem>
           <MenuItem onClick={() => goLogin()}>Login</MenuItem>

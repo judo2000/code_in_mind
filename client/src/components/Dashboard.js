@@ -2,6 +2,7 @@ import jwt from "jwt-decode";
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
 import { GET_ME } from "../utils/queries";
+import Spinner from "./Progress";
 
 const Dashboard = () => {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -15,7 +16,7 @@ const Dashboard = () => {
   }
 
   return loading ? (
-    <h2>LOADING...</h2>
+    <Spinner />
   ) : (
     <div>
       <br />
