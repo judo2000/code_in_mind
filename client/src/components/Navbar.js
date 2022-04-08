@@ -7,6 +7,8 @@ import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Typography from "@mui/material/Typography";
+import Auth from "../utils/auth";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   appBar: {
@@ -20,6 +22,8 @@ const style = {
 };
 
 const Navbar = () => {
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -51,6 +55,11 @@ const Navbar = () => {
     handleClose();
   };
   const goLogin = () => {
+    window.location.href = "/login";
+    handleClose();
+  };
+  const goLogout = () => {
+    Auth.logout();
     window.location.href = "/login";
     handleClose();
   };
@@ -90,7 +99,11 @@ const Navbar = () => {
           <MenuItem onClick={() => goDashboard()}>Dashboard</MenuItem>
           <MenuItem onClick={() => goAbout()}>About</MenuItem>
           <MenuItem onClick={() => goContact()}>Contact</MenuItem>
-          <MenuItem onClick={() => goLogin()}>Login</MenuItem>
+          {token ? (
+            <MenuItem onClick={() => goLogout()}>Logout</MenuItem>
+          ) : (
+            <MenuItem onClick={() => goLogin()}>Login</MenuItem>
+          )}
         </Menu>
       </Toolbar>
     </AppBar>
