@@ -23,7 +23,6 @@ const Dashboard = () => {
     <div>
       <br />
       <br />
-      <br />
       <h1>Dashboard</h1>
     </div>
   );
