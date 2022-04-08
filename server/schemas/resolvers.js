@@ -13,11 +13,11 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     users: async () => {
-      const users = await User.find({}).populate("createdCourses");
+      const users = await User.find({});
       return users;
     },
     courses: async () => {
-      const courses = await Course.find({}).populate("creator");
+      const courses = await Course.find({});
       return courses;
     },
   },
@@ -54,6 +54,16 @@ const resolvers = {
     //     return enrollment;
     //   }
     // },
+  },
+  User: {
+    createdCourses: async (root) => {
+      return await Course.find({ creator: root._id });
+    },
+  },
+  Course: {
+    creator: async (root) => {
+      return await User.findById(root.creator);
+    },
   },
 };
 module.exports = resolvers;
