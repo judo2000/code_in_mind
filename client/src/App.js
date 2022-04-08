@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Courses from "./components/Courses";
 import { Login } from "./components/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
+import {Signup} from "./components/Signup";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -63,6 +64,9 @@ function App() {
           </Route>
           <Route exact path="/login" element={<Login />}>
             Login
+          </Route>
+          <Route exact path="/signup" element={<Signup />}>
+            Signup
           </Route>
         </Routes>
       </Router>
