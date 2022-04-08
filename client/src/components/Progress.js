@@ -5,7 +5,12 @@ import Box from "@mui/material/Box";
 export default function CircularIndeterminate() {
   // Fixed Spinner
   return (
-    <Box sx={{ display: "flex", justifyContent: "center" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <CircularProgress />
     </Box>
   );
