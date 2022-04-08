@@ -12,7 +12,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Courses from "./components/Courses";
 import { Login } from "./components/Login";
-import Dashboard  from "./components/Dashboard";
+import Dashboard from "./components/Dashboard";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -22,12 +22,12 @@ const httpLink = createHttpLink({
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem("id_token");
+  const token = localStorage.getItem("token");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
+      authorization: token ? `${token}` : "",
     },
   };
 });

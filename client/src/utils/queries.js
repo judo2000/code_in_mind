@@ -20,9 +20,13 @@ export const GET_ME = gql`
   {
     me {
       _id
+      email
       firstName
       lastName
-      email
+      createdCourses {
+        courseTitle
+        description
+      }
     }
   }
 `;
