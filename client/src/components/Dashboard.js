@@ -7,7 +7,6 @@ import Spinner from "./Progress";
 const Dashboard = () => {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const user = jwt(token);
-  console.log(user.data.firstName);
   const { data, loading } = useQuery(GET_ME);
   const userData = data?.me || {};
   console.log(userData);
