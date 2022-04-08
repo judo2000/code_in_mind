@@ -12,7 +12,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Courses from "./components/Courses";
 import { Login } from "./components/Login";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
