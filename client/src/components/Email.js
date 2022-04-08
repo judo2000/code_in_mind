@@ -36,7 +36,7 @@ const Email = () => {
     emailjs
       .sendForm(
         "service_gf1y7ha",
-        "template_te9uvde",
+        "template_itzskoi",
         form.current,
         "Z8sh-4HD70jP-HY-0"
       )

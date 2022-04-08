@@ -20,6 +20,15 @@ const resolvers = {
       const courses = await Course.find({});
       return courses;
     },
+    singleCourse: async (parent, args, context) => {
+      const course = await Course.findOne(
+        { _id: context.courses.id },
+        (err) => {
+          console.log(err);
+        }
+      );
+      return course;
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
