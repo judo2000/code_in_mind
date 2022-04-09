@@ -23,8 +23,19 @@ const resolvers = {
       const courses = await Course.find({});
       return courses;
     },
+<<<<<<< HEAD
     course: async (parent, { id }) => {
       return Course.findOne({ id });
+=======
+    singleCourse: async (parent, args, context) => {
+      const course = await Course.findOne(
+        { _id: context.courses.id },
+        (err) => {
+          console.log(err);
+        }
+      );
+      return course;
+>>>>>>> master
     },
   },
   Mutation: {

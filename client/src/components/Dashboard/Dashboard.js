@@ -1,4 +1,3 @@
-import jwt from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Auth from "../../utils/auth";
@@ -18,16 +17,9 @@ const Dashboard = () => {
       navigate("/login");
     }
   });
-
+  // checks for user if logged in
   const { loading, data } = useQuery(GET_ME);
   const user = data?.me || {};
-
-  //if (data) {
-  //user = data.me;
-
-  //}
-  // console.log(data, 27);
-  // console.log(user);
 
   return loading ? (
     <div className="main">

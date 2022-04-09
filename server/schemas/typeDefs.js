@@ -25,7 +25,11 @@ const typeDefs = gql`
     user(_id: String!): User
     users: [User!]!
     courses: [Course!]!
+<<<<<<< HEAD
     course(_id: String!): Course
+=======
+    singleCourse(id: ID!): Course
+>>>>>>> master
   }
   type Mutation {
     login(email: String!, password: String!): Auth
