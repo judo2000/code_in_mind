@@ -1,18 +1,15 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { makeStyles, useTheme } from "@mui/material/styles";
 import CodeIcon from "@mui/icons-material/Code";
+import PsychologyIcon from "@mui/icons-material/Psychology";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Typography from "@mui/material/Typography";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { makeStyles, useTheme } from "@mui/material/styles";
-import PsychologyIcon from "@mui/icons-material/Psychology";
-
-import Auth from "../utils/auth";
-
 const style = {
   appBar: {
     backgroundColor: "#8A2BE2",
@@ -23,29 +20,20 @@ const style = {
     position: "fixed",
   },
 };
-
 const Navbar = () => {
-  const token = Auth.loggedIn() ? Auth.getToken() : null;
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
+  // check for screen size
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
   const goHome = () => {
     window.location.href = "/";
-    handleClose();
-  };
-  const goDashboard = () => {
-    window.location.href = "/dashboard";
     handleClose();
   };
   const goCourses = () => {
@@ -61,15 +49,6 @@ const Navbar = () => {
     handleClose();
   };
   const goLogin = () => {
-    window.location.href = "/login";
-    handleClose();
-  };
-  const goSignup = () => {
-    window.location.href = "/signup";
-    handleClose();
-  };
-  const goLogout = () => {
-    Auth.logout();
     window.location.href = "/login";
     handleClose();
   };
@@ -129,5 +108,4 @@ const Navbar = () => {
     </AppBar>
   );
 };
-
 export default Navbar;
