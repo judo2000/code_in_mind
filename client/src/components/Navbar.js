@@ -7,6 +7,10 @@ import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { makeStyles, useTheme } from "@mui/material/styles";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+
 import Auth from "../utils/auth";
 
 const style = {
@@ -25,6 +29,9 @@ const Navbar = () => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -71,48 +78,53 @@ const Navbar = () => {
       <Toolbar>
         <CodeIcon sx={{ mr: 1, fontSize: "2em" }} />
         <Typography variant="h5">Code in Mind</Typography>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          style={style.menu}
-          onClick={handleMenu}
-          sx={{ mr: 0 }}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          open={open}
-          onClose={() => setAnchorEl(null)}
-        >
-          <MenuItem onClick={() => goHome()}>Home</MenuItem>
-          <MenuItem onClick={() => goCourses()}>Courses</MenuItem>
-          <MenuItem onClick={() => goAbout()}>About</MenuItem>
-          <MenuItem onClick={() => goContact()}>Contact</MenuItem>
-          {token ? (
-            <>
-              <MenuItem onClick={() => goDashboard()}>Dashboard</MenuItem>
-              <MenuItem onClick={() => goLogout()}>Logout</MenuItem>
-            </>
-          ) : (
-            <>
-              <MenuItem onClick={() => goSignup()}>Signup</MenuItem>
+        <PsychologyIcon sx={{ mr: 1, ml: 1, fontSize: "2em" }} />
+        {/* if isMobile is true display mobile version of menu 
+        or display full menu if isMobile is false */}
+        {isMobile ? (
+          <>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              style={style.menu}
+              onClick={handleMenu}
+              sx={{ mr: 0 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={open}
+              onClose={() => setAnchorEl(null)}
+            >
+              <MenuItem onClick={() => goHome()}>Home</MenuItem>
+              <MenuItem onClick={() => goCourses()}>Courses</MenuItem>
+              <MenuItem onClick={() => goAbout()}>About</MenuItem>
+              <MenuItem onClick={() => goContact()}>Contact</MenuItem>
               <MenuItem onClick={() => goLogin()}>Login</MenuItem>
-            </>
-          )}
-        </Menu>
+            </Menu>
+          </>
+        ) : (
+          <>
+            <MenuItem onClick={() => goHome()}>Home</MenuItem>
+            <MenuItem onClick={() => goCourses()}>Courses</MenuItem>
+            <MenuItem onClick={() => goAbout()}>About</MenuItem>
+            <MenuItem onClick={() => goContact()}>Contact</MenuItem>
+            <MenuItem onClick={() => goLogin()}>Login</MenuItem>
+          </>
+        )}
       </Toolbar>
     </AppBar>
   );
