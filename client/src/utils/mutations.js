@@ -55,3 +55,11 @@ export const CREATE_COURSE = gql`
     }
   }
 `;
+export const ENROLL_IN_COURSE = gql`
+  mutation Mutation($courseId: String!) {
+    enrollInCourse(courseId: $courseId) {
+      email
+      firstName
+    }
+  }
+`;
