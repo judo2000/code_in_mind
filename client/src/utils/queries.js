@@ -16,6 +16,27 @@ export const GET_COURSES = gql`
   }
 `;
 
+export const GET_COURSE = gql`
+  query Course($_id: String!) {
+    course(_id: $_id) {
+      _id
+      courseTitle
+      description
+      creator {
+        _id
+        email
+        firstName
+        lastName
+        createdCourses {
+          _id
+          courseTitle
+          description
+        }
+      }
+    }
+  }
+`;
+
 export const GET_ME = gql`
   {
     me {
