@@ -10,6 +10,7 @@ import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Typography from "@mui/material/Typography";
+import Auth from "../utils/auth";
 const style = {
   appBar: {
     backgroundColor: "#8A2BE2",
@@ -21,6 +22,7 @@ const style = {
   },
 };
 const Navbar = () => {
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   // check for screen size
@@ -49,6 +51,15 @@ const Navbar = () => {
     handleClose();
   };
   const goLogin = () => {
+    window.location.href = "/login";
+    handleClose();
+  };
+  const goSignup = () => {
+    window.location.href = "/signup";
+    handleClose();
+  };
+  const goLogout = () => {
+    Auth.logout();
     window.location.href = "/login";
     handleClose();
   };
@@ -92,7 +103,16 @@ const Navbar = () => {
               <MenuItem onClick={() => goCourses()}>Courses</MenuItem>
               <MenuItem onClick={() => goAbout()}>About</MenuItem>
               <MenuItem onClick={() => goContact()}>Contact</MenuItem>
-              <MenuItem onClick={() => goLogin()}>Login</MenuItem>
+              {token ? (
+                <>
+                  <MenuItem onClick={() => goLogout()}>Logout</MenuItem>
+                </>
+              ) : (
+                <>
+                  <MenuItem onClick={() => goSignup()}>Signup</MenuItem>
+                  <MenuItem onClick={() => goLogin()}>Login</MenuItem>
+                </>
+              )}
             </Menu>
           </>
         ) : (
@@ -101,7 +121,16 @@ const Navbar = () => {
             <MenuItem onClick={() => goCourses()}>Courses</MenuItem>
             <MenuItem onClick={() => goAbout()}>About</MenuItem>
             <MenuItem onClick={() => goContact()}>Contact</MenuItem>
-            <MenuItem onClick={() => goLogin()}>Login</MenuItem>
+            {token ? (
+              <>
+                <MenuItem onClick={() => goLogout()}>Logout</MenuItem>
+              </>
+            ) : (
+              <>
+                <MenuItem onClick={() => goSignup()}>Signup</MenuItem>
+                <MenuItem onClick={() => goLogin()}>Login</MenuItem>
+              </>
+            )}
           </>
         )}
       </Toolbar>
