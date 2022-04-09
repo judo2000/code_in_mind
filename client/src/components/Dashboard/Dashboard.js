@@ -22,6 +22,26 @@ const Dashboard = () => {
   const { loading, data } = useQuery(GET_ME);
   console.log(data);
   const user = data?.me || {};
+
+  const enrolledCourses = user.enrolledCourses;
+
+  function MyCourses() {
+    return enrolledCourses.length > 0 ? (
+      <div style={{ width: "100%" }}>
+        {enrolledCourses.map((course) => {
+          return (
+            <div key={course._id}>
+              <p>{course.courseTitle}</p>
+            </div>
+          );
+        })}
+      </div>
+    ) : (
+      <h2>You are not enrolled in any courses.</h2>
+    );
+  }
+
+  console.log(enrolledCourses);
   console.log(user);
   return loading ? (
     <div className="main">
@@ -30,9 +50,11 @@ const Dashboard = () => {
   ) : (
     <div className="main">
       <h1>Dashboard</h1>
-      <h2>
+      <h1>
         Welcome {user.firstName} {user.lastName}
-      </h2>
+      </h1>
+      <h2>My Courses</h2>
+      <MyCourses />
     </div>
   );
 };

@@ -29,6 +29,7 @@ export const GET_ME = gql`
       }
       enrolledCourseIds
       enrolledCourses {
+        _id
         courseTitle
         description
       }
