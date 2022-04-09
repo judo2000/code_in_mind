@@ -11,9 +11,10 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Courses from "./components/Courses";
+import Course from "./components/SingleCourse";
 import { Login } from "./components/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
-import {Signup} from "./components/Signup";
+import { Signup } from "./components/Signup";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -52,6 +53,9 @@ function App() {
           </Route>
           <Route exact path="/courses" element={<Courses />}>
             About
+          </Route>
+          <Route exact path="/courses/:id" element={<Course />}>
+            Course
           </Route>
           <Route exact path="/about" element={<About />}>
             About

@@ -38,8 +38,16 @@ const Navbar = () => {
     window.location.href = "/";
     handleClose();
   };
+  const goDashboard = () => {
+    window.location.href = "/dashboard";
+    handleClose();
+  };
   const goCourses = () => {
     window.location.href = "/courses";
+    handleClose();
+  };
+  const goCourse = () => {
+    window.location.href = "/courses/:id";
     handleClose();
   };
   const goAbout = () => {
@@ -101,10 +109,12 @@ const Navbar = () => {
             >
               <MenuItem onClick={() => goHome()}>Home</MenuItem>
               <MenuItem onClick={() => goCourses()}>Courses</MenuItem>
+              <MenuItem onClick={() => goCourse()}>Course</MenuItem>
               <MenuItem onClick={() => goAbout()}>About</MenuItem>
               <MenuItem onClick={() => goContact()}>Contact</MenuItem>
               {token ? (
                 <div>
+                  <MenuItem onClick={() => goDashboard()}>Dashboard</MenuItem>
                   <MenuItem onClick={() => goLogout()}>Logout</MenuItem>
                 </div>
               ) : (
@@ -119,17 +129,19 @@ const Navbar = () => {
           <>
             <MenuItem onClick={() => goHome()}>Home</MenuItem>
             <MenuItem onClick={() => goCourses()}>Courses</MenuItem>
+            <MenuItem onClick={() => goCourse()}>Course</MenuItem>
             <MenuItem onClick={() => goAbout()}>About</MenuItem>
             <MenuItem onClick={() => goContact()}>Contact</MenuItem>
             {token ? (
-              <div>
+              <>
+                <MenuItem onClick={() => goDashboard()}>Dashboard</MenuItem>
                 <MenuItem onClick={() => goLogout()}>Logout</MenuItem>
-              </div>
+              </>
             ) : (
-              <div>
+              <>
                 <MenuItem onClick={() => goSignup()}>Signup</MenuItem>
                 <MenuItem onClick={() => goLogin()}>Login</MenuItem>
-              </div>
+              </>
             )}
           </>
         )}
