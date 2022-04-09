@@ -21,6 +21,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    courses: [],
   },
   // set this to use virtual below
   {
