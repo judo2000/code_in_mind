@@ -52,19 +52,29 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    // enrollments: async (parent, { input }, context) => {
-    //   if (!context.user) {
-    //     throw new AuthenticationError("Not logged in");
-    //   }
-    //   if (context.user) {
-    //     const enrollment = await User.findOneAndUpdate({ enrollments: input });
-    //     return enrollment;
-    //   }
-    // },
+    enrollInCourse: async (parent, { courseId }, context) => {
+      if (context.user) {
+        try {
+          const user = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $push: { enrolledCourseIds: courseId } }
+          );
+          return user;
+        } catch (error) {
+          console.log(error);
+          return error;
+        }
+      }
+
+      ///throw new AuthenticationError("Not logged in");
+    },
   },
   User: {
     createdCourses: async (root) => {
       return await Course.find({ creator: root._id });
+    },
+    enrolledCourses: async (root) => {
+      return await Course.find({ _id: { $in: root.enrolledCourseIds } });
     },
   },
   Course: {
