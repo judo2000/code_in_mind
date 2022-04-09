@@ -23,10 +23,6 @@ export const GET_ME = gql`
       email
       firstName
       lastName
-      createdCourses {
-        courseTitle
-        description
-      }
     }
   }
 `;
