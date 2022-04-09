@@ -109,7 +109,6 @@ const Navbar = () => {
             >
               <MenuItem onClick={() => goHome()}>Home</MenuItem>
               <MenuItem onClick={() => goCourses()}>Courses</MenuItem>
-              <MenuItem onClick={() => goCourse()}>Course</MenuItem>
               <MenuItem onClick={() => goAbout()}>About</MenuItem>
               <MenuItem onClick={() => goContact()}>Contact</MenuItem>
               {token ? (
@@ -129,7 +128,6 @@ const Navbar = () => {
           <>
             <MenuItem onClick={() => goHome()}>Home</MenuItem>
             <MenuItem onClick={() => goCourses()}>Courses</MenuItem>
-            <MenuItem onClick={() => goCourse()}>Course</MenuItem>
             <MenuItem onClick={() => goAbout()}>About</MenuItem>
             <MenuItem onClick={() => goContact()}>Contact</MenuItem>
             {token ? (

@@ -59,7 +59,10 @@ export function GridTemplateColumns() {
               <p>{course.creator.firstName}</p>
               <p>{course.creator.lastName}</p>
               <p>{course.creator.email}</p>
-              <a href={`/courses/${course._id}`}>
+              <a
+                style={{ textDecoration: "none" }}
+                href={`/courses/${course._id}`}
+              >
                 <Button>View</Button>
               </a>
             </Item>
