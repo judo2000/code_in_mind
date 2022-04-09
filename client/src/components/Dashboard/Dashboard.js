@@ -9,6 +9,7 @@ import "./dashboard.style.css";
 const Dashboard = () => {
   // check if the user is logged in and has a valid token
   const token = Auth.loggedIn() ? Auth.getToken() : null;
+
   // if the user is not logged in redirect to login
   //const user = jwt(token);
   const navigate = useNavigate();
@@ -19,8 +20,9 @@ const Dashboard = () => {
   });
   // checks for user if logged in
   const { loading, data } = useQuery(GET_ME);
+  console.log(data);
   const user = data?.me || {};
-
+  console.log(user);
   return loading ? (
     <div className="main">
       <Spinner />

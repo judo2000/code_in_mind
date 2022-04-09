@@ -6,7 +6,8 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     createdCourses: [Course]
-    courses: [Course]
+    enrolledCourseIds: [ID]
+    enrolledCourses: [Course]
   }
 
   type Course {
@@ -36,7 +37,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    enrollInCourse(courses: [ID]!): User
+    enrollInCourse(courseId: String!): User
     addCourse(
       courseTitle: String!
       description: String!

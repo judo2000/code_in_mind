@@ -21,7 +21,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    courses: [],
+    enrolledCourseIds: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Course",
+      },
+    ],
   },
   // set this to use virtual below
   {
