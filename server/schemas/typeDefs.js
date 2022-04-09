@@ -6,6 +6,7 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     createdCourses: [Course]
+    courses: [Course]
   }
 
   type Course {
@@ -22,10 +23,10 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    user(email: String!): User
+    user(_id: String!): User
     users: [User!]!
     courses: [Course!]!
-    singleCourse(id: ID!): Course
+    course(_id: String!): Course
   }
   type Mutation {
     login(email: String!, password: String!): Auth
@@ -35,6 +36,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
+    enrollInCourse(courses: [ID]!): User
     addCourse(
       courseTitle: String!
       description: String!

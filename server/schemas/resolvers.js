@@ -16,18 +16,15 @@ const resolvers = {
       const users = await User.find({});
       return users;
     },
+    user: async (parent, { id }) => {
+      return User.findOne({ id });
+    },
     courses: async () => {
       const courses = await Course.find({});
       return courses;
     },
-    singleCourse: async (parent, args, context) => {
-      const course = await Course.findOne(
-        { _id: context.courses.id },
-        (err) => {
-          console.log(err);
-        }
-      );
-      return course;
+    course: async (parent, { id }) => {
+      return Course.findOne({ id });
     },
   },
   Mutation: {
