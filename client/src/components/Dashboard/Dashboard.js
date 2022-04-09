@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { GET_ME } from "../../utils/queries";
 import Spinner from "../Progress";
 import "./dashboard.style.css";
+import Button from "@mui/material/Button";
 
 const Dashboard = () => {
   // check if the user is logged in and has a valid token
@@ -32,6 +33,7 @@ const Dashboard = () => {
           return (
             <div key={course._id}>
               <p>{course.courseTitle}</p>
+             
             </div>
           );
         })}
@@ -54,7 +56,11 @@ const Dashboard = () => {
         Welcome {user.firstName} {user.lastName}
       </h1>
       <h2>My Courses</h2>
+       <a href={`/courses/create`}>
+                <Button>Add Course</Button>
+              </a>
       <MyCourses />
+     
     </div>
   );
 };

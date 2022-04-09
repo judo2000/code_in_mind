@@ -12,6 +12,8 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+
 export const ADD_USER = gql`
   mutation Mutation(
     $firstName: String!
@@ -32,6 +34,24 @@ export const ADD_USER = gql`
         firstName
         lastName
       }
+    }
+  }
+`;
+
+export const CREATE_COURSE = gql`
+  mutation AddCourse(
+    $courseTitle: String!
+    $description: String!
+    $creator: String!
+  ) {
+    addCourse(
+      courseTitle: $courseTitle
+      description: $description
+      creator: $creator
+    ) {
+      _id
+      courseTitle
+      description
     }
   }
 `;
