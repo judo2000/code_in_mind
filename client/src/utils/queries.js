@@ -19,10 +19,19 @@ export const GET_COURSES = gql`
 export const GET_ME = gql`
   {
     me {
-      _id
       email
       firstName
       lastName
+      createdCourses {
+        _id
+        courseTitle
+        description
+      }
+      enrolledCourseIds
+      enrolledCourses {
+        courseTitle
+        description
+      }
     }
   }
 `;

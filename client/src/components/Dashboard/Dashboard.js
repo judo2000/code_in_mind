@@ -30,7 +30,9 @@ const Dashboard = () => {
   ) : (
     <div className="main">
       <h1>Dashboard</h1>
-      <h2>Welcome {user.firstName}</h2>
+      <h2>
+        Welcome {user.firstName} {user.lastName}
+      </h2>
     </div>
   );
 };

@@ -122,14 +122,14 @@ const Navbar = () => {
             <MenuItem onClick={() => goAbout()}>About</MenuItem>
             <MenuItem onClick={() => goContact()}>Contact</MenuItem>
             {token ? (
-              <>
+              <div>
                 <MenuItem onClick={() => goLogout()}>Logout</MenuItem>
-              </>
+              </div>
             ) : (
-              <>
+              <div>
                 <MenuItem onClick={() => goSignup()}>Signup</MenuItem>
                 <MenuItem onClick={() => goLogin()}>Login</MenuItem>
-              </>
+              </div>
             )}
           </>
         )}
