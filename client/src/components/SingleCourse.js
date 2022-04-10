@@ -5,7 +5,6 @@ import { GET_COURSE } from "../utils/queries";
 import { ENROLL_IN_COURSE } from "../utils/mutations";
 import Spinner from "./Progress";
 
-
 const SingleCourse = () => {
   const [enrollMutation] = useMutation(ENROLL_IN_COURSE);
   const { id } = useParams();
@@ -30,7 +29,7 @@ const SingleCourse = () => {
           enrollMutation({
             variables: {
               _id: course.courseId,
-              creator: user._id,
+              //creator: user._id,
             },
           })
         }
