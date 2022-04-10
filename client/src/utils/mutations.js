@@ -13,7 +13,6 @@ export const LOGIN_USER = gql`
   }
 `;
 
-
 export const ADD_USER = gql`
   mutation Mutation(
     $firstName: String!
@@ -56,8 +55,9 @@ export const CREATE_COURSE = gql`
   }
 `;
 export const ENROLL_IN_COURSE = gql`
-  mutation Mutation($courseId: String!) {
+  mutation EnrollInCourse($courseId: String!) {
     enrollInCourse(courseId: $courseId) {
+      _id
       email
       firstName
     }

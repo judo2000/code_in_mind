@@ -1,5 +1,6 @@
 import jwt from "jwt-decode";
 import Auth from "../utils/auth";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
@@ -8,16 +9,15 @@ import { ENROLL_IN_COURSE } from "../utils/mutations";
 import Spinner from "./Progress";
 
 const SingleCourse = () => {
-  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const navigate = useNavigate();
 
-  const user = jwt(token);
-  console.log(user, 14)
   const [enrollMutation] = useMutation(ENROLL_IN_COURSE);
   const { id } = useParams();
-  console.log(id, 17);
+
   const { loading, data } = useQuery(GET_COURSE, {
     variables: { _id: id },
   });
+  console.log(id);
   const course = data?.course || {};
 
   return loading ? (
@@ -34,8 +34,7 @@ const SingleCourse = () => {
         onClick={() =>
           enrollMutation({
             variables: {
-              _id: course.courseId,
-              enrolledCoursesIds: user._id
+              courseId: id,
             },
           })
         }
