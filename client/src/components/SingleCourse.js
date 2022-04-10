@@ -11,6 +11,11 @@ import Spinner from "./Progress";
 const SingleCourse = () => {
   const navigate = useNavigate();
 
+  const routeChange = () =>{ 
+    let path = `/dashboard`; 
+    navigate(path);
+  }
+
   const [enrollMutation] = useMutation(ENROLL_IN_COURSE);
   const { id } = useParams();
 
@@ -36,7 +41,10 @@ const SingleCourse = () => {
             variables: {
               courseId: id,
             },
-          })
+          },
+          routeChange()
+            )
+          
         }
       >
         Enroll In Course
@@ -44,5 +52,7 @@ const SingleCourse = () => {
     </div>
   );
 };
+
+
 
 export default SingleCourse;
