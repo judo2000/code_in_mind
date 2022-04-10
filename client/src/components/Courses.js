@@ -5,7 +5,6 @@ import Spinner from "./Progress";
 import * as React from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 
 function Item(props) {
   const { sx, ...other } = props;
@@ -59,12 +58,6 @@ export function GridTemplateColumns() {
               <p>{course.creator.firstName}</p>
               <p>{course.creator.lastName}</p>
               <p>{course.creator.email}</p>
-              <a
-                style={{ textDecoration: "none" }}
-                href={`/courses/${course._id}`}
-              >
-                <Button>View</Button>
-              </a>
             </Item>
           );
         })}
