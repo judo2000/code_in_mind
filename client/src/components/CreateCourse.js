@@ -1,6 +1,7 @@
 import jwt from "jwt-decode";
 import Auth from "../utils/auth";
 import { Form, Field } from "react-final-form";
+import { useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { CREATE_COURSE } from "../utils/mutations";
@@ -8,9 +9,18 @@ import { CREATE_COURSE } from "../utils/mutations";
 export const CreateCourse = () => {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const user = jwt(token);
+  console.log(user.data.isAdmin)
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token || !user.data.isAdmin) {
+      navigate("/dashboard");
+    } 
+  });
 
   const [addCourseMutation] = useMutation(CREATE_COURSE);
-  const navigate = useNavigate();
+  
 
   return (
     <Form

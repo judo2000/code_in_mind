@@ -46,7 +46,7 @@ const Dashboard = () => {
   console.log(enrolledCourses);
   console.log(user, 47);
   return loading ? (
-    <div maxWidth="sm">
+    <div>
       <Spinner />
     </div>
   ) : (
