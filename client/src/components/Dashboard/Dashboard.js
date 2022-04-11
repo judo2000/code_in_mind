@@ -23,6 +23,7 @@ const Dashboard = () => {
   const { loading, data } = useQuery(GET_ME);
   console.log(data);
   const user = data?.me || {};
+  console.log(user, 26);
 
   const enrolledCourses = user.enrolledCourses;
 
@@ -33,7 +34,6 @@ const Dashboard = () => {
           return (
             <div key={course._id}>
               <p>{course.courseTitle}</p>
-             
             </div>
           );
         })}
@@ -44,9 +44,9 @@ const Dashboard = () => {
   }
 
   console.log(enrolledCourses);
-  console.log(user);
+  console.log(user, 47);
   return loading ? (
-    <div className="main">
+    <div maxWidth="sm">
       <Spinner />
     </div>
   ) : (
@@ -56,11 +56,15 @@ const Dashboard = () => {
         Welcome {user.firstName} {user.lastName}
       </h1>
       <h2>My Courses</h2>
-       <a href={`/courses/create`}>
-                <Button>Add Course</Button>
-              </a>
+      {user.isAdmin ? (
+        <a href={`/courses/create`}>
+          <Button>Add Course</Button>
+        </a>
+      ) : (
+        ""
+      )}
+
       <MyCourses />
-     
     </div>
   );
 };

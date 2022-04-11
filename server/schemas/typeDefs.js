@@ -5,6 +5,7 @@ const typeDefs = gql`
     email: String
     firstName: String
     lastName: String
+    isAdmin: Boolean
     createdCourses: [Course]
     enrolledCourseIds: [ID]
     enrolledCourses: [Course]
