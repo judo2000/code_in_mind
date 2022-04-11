@@ -36,10 +36,10 @@ const resolvers = {
       return { token, user };
     },
     addCourse: async (parent, args) => {
-      //if (context.user) {
-      const course = await Course.create(args);
-      return course;
-      //}
+      if (context.user) {
+        const course = await Course.create(args);
+        return course;
+      }
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

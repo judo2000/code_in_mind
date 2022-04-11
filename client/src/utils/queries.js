@@ -43,6 +43,7 @@ export const GET_ME = gql`
       email
       firstName
       lastName
+      isAdmin
       createdCourses {
         _id
         courseTitle
