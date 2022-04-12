@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useMutation } from "@apollo/client";
+
 import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 import { GET_ME } from "../../utils/queries";
+import { DROP_COURSE } from "../../utils/mutations";
 import Spinner from "../Progress";
 import "./dashboard.style.css";
 import Button from "@mui/material/Button";
@@ -14,6 +17,7 @@ const Dashboard = () => {
   // if the user is not logged in redirect to login
   //const user = jwt(token);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!token) {
       navigate("/login");
@@ -27,6 +31,15 @@ const Dashboard = () => {
 
   const enrolledCourses = user.enrolledCourses;
 
+  const [dropMutation] = useMutation(DROP_COURSE);
+
+  const routeChange = () => {
+    let path = `/dashboard`;
+    navigate(path);
+  };
+
+  
+
   function MyCourses() {
     return enrolledCourses.length > 0 ? (
       <div style={{ width: "100%" }}>
@@ -34,6 +47,21 @@ const Dashboard = () => {
           return (
             <div key={course._id}>
               <p>{course.courseTitle}</p>
+              <p>{course.courseTitle}</p>
+              <button
+                onClick={() =>
+                  dropMutation(
+                    {
+                      variables: {
+                        courseId: course._id,
+                      },
+                    },
+                    routeChange()
+                  )
+                }
+              >
+                Drop Course
+              </button>
             </div>
           );
         })}
