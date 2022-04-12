@@ -50,7 +50,7 @@ My other passion in life is judo. I have practiced judo for just over 33 years. 
             name="Matthew Brignola"
             github="https://github.com/prismaticdevs"
             linkedin="https://www.linkedin.com/in/matthewbrignola/"
-            summary="Matthew develops with both React.js and Vue.js for front end web frameworks. As a fullstack developer he puts and emphasis and developing robust backend APIS and databases and compliments them with intuitive and well designed front ends.  "
+            summary="Matthew develops with both React.js and Vue.js for front end web frameworks. As a fullstack developer he puts an emphasis and developing robust backend APIS and databases that he then compliments them with intuitive and well designed front ends. Matthew adheres to modern UI/UX standards and has a strong emphasis on web page design. "
           />
         </Grid>
       </Grid>

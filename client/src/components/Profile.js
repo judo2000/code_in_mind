@@ -53,36 +53,48 @@ export default function Profile(props) {
   const more = (
     <>
       {short}
-      <ExpandMoreIcon
-        style={{ cursor: "pointer" }}
-        onClick={() => setShowMore(true)}
-      />
-      <Typography sx={{ fontWeight: 600 }}>More</Typography>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <ExpandMoreIcon
+          style={{ cursor: "pointer" }}
+          onClick={() => setShowMore(true)}
+        />
+        <Typography sx={{ fontWeight: 600 }}>More</Typography>
+      </div>
     </>
   );
   const less = (
     <>
       {props.summary}
-      <ExpandLessIcon
-        style={{ cursor: "pointer" }}
-        onClick={() => setShowMore(false)}
-      />
-      <Typography sx={{ fontWeight: 600 }}>Less</Typography>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <ExpandLessIcon
+          style={{ cursor: "pointer" }}
+          onClick={() => setShowMore(false)}
+        />
+        <Typography sx={{ fontWeight: 600 }}>Less</Typography>
+      </div>
     </>
   );
   return (
     <Card sx={{ maxWidth: 275 }}>
       <CardContent>
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" sx={{ textAlign: "center" }} component="div">
           {props.name}
         </Typography>
         {/* Read More */}
         <Typography sx={{ display: "flex", flexDirection: "column" }}>
           {more ? short : props.summary}
-          {showMore ? less : more}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            {showMore ? less : more}
+          </div>
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ display: "flex", justifyContent: "center" }}>
         <Button
           onClick={() => (window.location.href = props.github)}
           size="small"
