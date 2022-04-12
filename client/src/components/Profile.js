@@ -45,21 +45,42 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import { useState } from "react";
 
 export default function Profile(props) {
-  const text = props.summary;
   const [showMore, setShowMore] = useState(false);
+  let short = props.summary;
+  if (short) {
+    short = short.slice(0, 150) + "...";
+  }
+  const more = (
+    <>
+      {short}
+      <ExpandMoreIcon
+        style={{ cursor: "pointer" }}
+        onClick={() => setShowMore(true)}
+      />
+      <Typography sx={{ fontWeight: 600 }}>More</Typography>
+    </>
+  );
+  const less = (
+    <>
+      {props.summary}
+      <ExpandLessIcon
+        style={{ cursor: "pointer" }}
+        onClick={() => setShowMore(false)}
+      />
+      <Typography sx={{ fontWeight: 600 }}>Less</Typography>
+    </>
+  );
   return (
     <Card sx={{ maxWidth: 275 }}>
       <CardContent>
         <Typography variant="h5" component="div">
           {props.name}
         </Typography>
-        {/* {showMore ? props.summary : props.summary.substring(0, 250)} */}
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {/* {showMore ? text : `${text.substring(0, 50)}`} */}
-          {props.summary}
+        {/* Read More */}
+        <Typography sx={{ display: "flex", flexDirection: "column" }}>
+          {more ? short : props.summary}
+          {showMore ? less : more}
         </Typography>
-        <ExpandMoreIcon onClick={() => setShowMore(false)} />
-        <ExpandLessIcon onClick={() => setShowMore(true)} />
       </CardContent>
       <CardActions>
         <Button
