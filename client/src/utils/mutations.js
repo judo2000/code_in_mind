@@ -63,3 +63,14 @@ export const ENROLL_IN_COURSE = gql`
     }
   }
 `;
+
+export const DROP_COURSE = gql`
+  mutation DropCourse($courseId: String!) {
+    dropCourse(courseId: $courseId) {
+      enrolledCourses {
+        courseTitle
+        _id
+      }
+    }
+  }
+`;

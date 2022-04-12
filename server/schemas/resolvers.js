@@ -67,8 +67,24 @@ const resolvers = {
           return error;
         }
       }
+      throw new AuthenticationError("Not logged in");
+    },
+    dropCourse: async (parent, { courseId }, context) => {
+      if (context.user) {
+        try {
+          const user = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { enrolledCourseIds: courseId } },
+            { new: true }
+          );
+          return user;
+        } catch (error) {
+          console.log(error);
+          return error;
+        }
+      }
 
-      ///throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in");
     },
   },
   User: {
