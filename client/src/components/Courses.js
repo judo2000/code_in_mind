@@ -1,11 +1,11 @@
-import { useQuery, useMutation} from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { GET_COURSES } from "../utils/queries";
-// import { REMOVE_COURSE } from "../utils/mutations";
 import Spinner from "./Progress";
 
 import * as React from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 function Item(props) {
   const { sx, ...other } = props;
@@ -43,21 +43,18 @@ Item.propTypes = {
 
 export function GridTemplateColumns() {
   const { data, loading } = useQuery(GET_COURSES);
-  // const [removeCourse, { error }] = useMutation(REMOVE_COURSE);
   const courseData = data?.courses || {};
-  // const handleRemoveCourse = (courseId) => { 
-  //   removeCourse({
-  //     variables: {
-  //       courseId
-    //   }
-    // })
-  
-  // };
   return loading ? (
     <Spinner />
   ) : (
     <div style={{ width: "100%" }}>
-      <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
+      <Box
+        sx={{
+          display: "grid",
+          marginTop: "2em",
+          gridTemplateColumns: "repeat(3, 1fr)",
+        }}
+      >
         {courseData.map((course) => {
           return (
             <Item key={course._id}>
@@ -67,11 +64,7 @@ export function GridTemplateColumns() {
               <p>{course.creator.firstName}</p>
               <p>{course.creator.lastName}</p>
               <p>{course.creator.email}</p>
-              <a href={`/courses/${course._id}`}>View Course Info</a>
-              {/* <button onClick={() => handleRemoveCourse(course._id)}>Delete</button> */}
-              
-          
-              
+              <Button href={`/courses/${course._id}`}>View Course Info</Button>
             </Item>
           );
         })}

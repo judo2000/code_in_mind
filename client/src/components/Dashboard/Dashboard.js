@@ -18,7 +18,6 @@ const Dashboard = () => {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
 
   // if the user is not logged in redirect to login
-  //const user = jwt(token);
   const navigate = useNavigate();
   console.log(navigate, 20);
   useEffect(() => {
@@ -91,7 +90,7 @@ const Dashboard = () => {
           <Grid item xs={12} sm={4} md={4} key={course._id}>
             <Item color="secondary">
               <h2>{course.courseTitle}</h2>
-              <p>{course.courseTitle}</p>
+              <p>{course.description}</p>
               <Button
                 color="error"
                 variant="contained"
@@ -126,7 +125,15 @@ const Dashboard = () => {
     </div>
   ) : (
     <div className="main">
-      <Container maxWidth="sm">
+      <Container
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+        maxWidth="sm"
+      >
         <h1>Dashboard</h1>
         <h1>
           Welcome {user.firstName} {user.lastName}

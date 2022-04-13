@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { CREATE_COURSE } from "../utils/mutations";
+import { Button } from "@mui/material";
 
 export const CreateCourse = () => {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -41,31 +42,38 @@ export const CreateCourse = () => {
       }}
       render={({ values, handleSubmit, form }) => {
         return (
-          <div>
+          <div
+            style={{
+              marginTop: "8em",
+              display: "flex",
+              flexDirection: "column",
+              margin: "0 auto",
+              width: "33%",
+            }}
+          >
+            <h2 style={{ marginTop: "6em" }}>Course Title</h2>
+            <Field
+              style={{ padding: ".5em" }}
+              name="courseTitle"
+              component="input"
+            />
+            <h2>Description</h2>
+            <Field
+              name="description"
+              style={{ padding: ".5em" }}
+              component="input"
+            />
             <br />
             <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div>
-              <label for="courseTitle">Course Title</label>
-              <Field name="courseTitle" component="input" />
-            </div>
-
-            <h1>Description</h1>
-            <Field name="description" component="input" />
-
-            <button
+            <Button
+              variant="contained"
               onClick={async () => {
                 await handleSubmit();
                 form.reset();
               }}
             >
               Submit
-            </button>
+            </Button>
           </div>
         );
       }}
