@@ -17,7 +17,7 @@ const Dashboard = () => {
   // if the user is not logged in redirect to login
   //const user = jwt(token);
   const navigate = useNavigate();
-
+  console.log(navigate, 20);
   useEffect(() => {
     if (!token) {
       navigate("/login");
@@ -31,14 +31,15 @@ const Dashboard = () => {
 
   const enrolledCourses = user.enrolledCourses;
 
-  const [dropMutation] = useMutation(DROP_COURSE);
+  const [dropMutation] = useMutation(DROP_COURSE, {
+    refetchQueries: [GET_ME],
+    fetchPolicy: "no-cache",
+  });
 
   const routeChange = () => {
     let path = `/dashboard`;
     navigate(path);
   };
-
-  
 
   function MyCourses() {
     return enrolledCourses.length > 0 ? (
