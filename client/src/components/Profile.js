@@ -1,4 +1,5 @@
 import Card from "@mui/material/Card";
+import Box from "@mui/material/Box";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
@@ -50,7 +51,7 @@ export default function Profile(props) {
           {props.name}
         </Typography>
         {/* Read More */}
-        <Typography sx={{ display: "flex", flexDirection: "column" }}>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
           {more ? short : props.summary}
           <div
             style={{
@@ -61,7 +62,7 @@ export default function Profile(props) {
           >
             {showMore ? less : more}
           </div>
-        </Typography>
+        </Box>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "center" }}>
         <Button
