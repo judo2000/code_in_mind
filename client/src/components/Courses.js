@@ -1,5 +1,6 @@
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation} from "@apollo/client";
 import { GET_COURSES } from "../utils/queries";
+// import { REMOVE_COURSE } from "../utils/mutations";
 import Spinner from "./Progress";
 
 import * as React from "react";
@@ -42,8 +43,16 @@ Item.propTypes = {
 
 export function GridTemplateColumns() {
   const { data, loading } = useQuery(GET_COURSES);
+  // const [removeCourse, { error }] = useMutation(REMOVE_COURSE);
   const courseData = data?.courses || {};
-
+  // const handleRemoveCourse = (courseId) => { 
+  //   removeCourse({
+  //     variables: {
+  //       courseId
+    //   }
+    // })
+  
+  // };
   return loading ? (
     <Spinner />
   ) : (
@@ -59,6 +68,9 @@ export function GridTemplateColumns() {
               <p>{course.creator.lastName}</p>
               <p>{course.creator.email}</p>
               <a href={`/courses/${course._id}`}>View Course Info</a>
+              {/* <button onClick={() => handleRemoveCourse(course._id)}>Delete</button> */}
+              
+          
               
             </Item>
           );
