@@ -2,6 +2,7 @@ import { Form, Field } from "react-final-form";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { LOGIN_USER } from "../utils/mutations";
+import { Button } from "@mui/material";
 
 export const Login = () => {
   const [loginMutation] = useMutation(LOGIN_USER);
@@ -29,23 +30,11 @@ export const Login = () => {
       render={({ values, handleSubmit, form }) => {
         return (
           <div>
-            <br />
-            <br />
-            {/*<h1>FirstName</h1>*/}
-            {/*<Field*/}
-            {/*	name='firstName'*/}
-            {/*	component='input'*/}
-            {/*/>*/}
-            {/*<h1>Last Name</h1>*/}
-            {/*<Field*/}
-            {/*	name='lastName'*/}
-            {/*	component='input'*/}
-            {/*/>*/}
             <h1>Email</h1>
             <Field name="email" component="input" />
             <h1>Password</h1>
             <Field name="password" component="input" type="password" />
-            <button
+            <Button
               disabled={
                 values?.password?.length === 0 || values?.email?.length === 0
               }
@@ -53,9 +42,11 @@ export const Login = () => {
                 await handleSubmit();
                 form.reset();
               }}
+              variant="contained"
+              color="primary"
             >
               Submit
-            </button>
+            </Button>
           </div>
         );
       }}
