@@ -1,36 +1,3 @@
-// import GitHubIcon from "@mui/icons-material/GitHub";
-// import LinkedInIcon from "@mui/icons-material/LinkedIn";
-// import { Grid, Typography, Box, Card, CardContent } from "@mui/material";
-
-// const Profile = (props) => {
-//   return (
-//     <Card>
-//       <CardContent>
-//         <Grid container>
-//           <Grid sx={{ m: 3 }} item>
-//             <Box sx={{ display: "flex", justifyContent: "center" }}>
-//               <Typography sx={{ fontSize: "2em" }}>{props.name}</Typography>
-//             </Box>
-//             <Typography sx={{ marginLeft: "15em", marginRight: "15em" }}>
-//               {props.summary}
-//             </Typography>
-//             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-//               <a href={props.github} target="_blank" rel="noreferrer">
-//                 <GitHubIcon sx={{ fontSize: "3em", color: "black" }} />
-//               </a>
-//               <a href={props.linkedin} target="_blank" rel="noreferrer">
-//                 <LinkedInIcon sx={{ fontSize: "3em", color: "#0a66c2" }} />
-//               </a>
-//             </Box>
-//           </Grid>
-//         </Grid>
-//       </CardContent>
-//     </Card>
-//   );
-// };
-
-// export default Profile;
-
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
