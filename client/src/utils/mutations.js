@@ -74,3 +74,13 @@ export const DROP_COURSE = gql`
     }
   }
 `;
+
+export const DELETE_COURSE = gql`
+  mutation Mutation($courseId: String!) {
+    deleteCourse(courseId: $courseId) {
+      courseTitle
+      _id
+      description
+    }
+  }
+`;

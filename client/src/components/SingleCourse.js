@@ -6,6 +6,7 @@ import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { GET_COURSE } from "../utils/queries";
 import { ENROLL_IN_COURSE } from "../utils/mutations";
+import { DELETE_COURSE } from "../utils/mutations";
 import Spinner from "./Progress";
 
 const SingleCourse = () => {
@@ -17,6 +18,8 @@ const SingleCourse = () => {
   }
 
   const [enrollMutation] = useMutation(ENROLL_IN_COURSE);
+
+  const [deleteMutation] = useMutation(DELETE_COURSE)
   const { id } = useParams();
 
   const { loading, data } = useQuery(GET_COURSE, {
@@ -48,6 +51,20 @@ const SingleCourse = () => {
         }
       >
         Enroll In Course
+      </button>
+      <button
+        onClick={() =>
+          deleteMutation({
+            variables: {
+              courseId: id,
+            },
+          },
+          routeChange()
+            )
+          
+        }
+      >
+        Delete Course
       </button>
     </div>
   );
