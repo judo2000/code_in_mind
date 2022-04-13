@@ -40,6 +40,7 @@ const typeDefs = gql`
     ): Auth
     enrollInCourse(courseId: String!): User
     dropCourse(courseId: String!): User
+    deleteCourse(courseId: String!): Course
     addCourse(
       courseTitle: String!
       description: String!

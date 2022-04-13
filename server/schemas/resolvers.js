@@ -86,6 +86,16 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
+    deleteCourse: async (parent, { courseId }, context) => {
+      if (context.user) {
+        await User.updateMany(
+          
+          { enrolledCourseIds: { $in: [courseId] } },
+        { $pull: { enrolledCourseIds: courseId }}
+        )
+        const course = await Course.findByIdAndDelete({ _id: courseId })
+      }
+    }
   },
   User: {
     createdCourses: async (root) => {
