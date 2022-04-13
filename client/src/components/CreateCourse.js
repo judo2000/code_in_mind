@@ -44,17 +44,10 @@ export const CreateCourse = () => {
           <div>
             <br />
             <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div>
-              <label for="courseTitle">Course Title</label>
-              <Field name="courseTitle" component="input" />
-            </div>
 
+            <h1>Course Title</h1>
+
+            <Field name="courseTitle" component="input" />
             <h1>Description</h1>
             <Field name="description" component="input" />
 
