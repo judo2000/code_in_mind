@@ -1,7 +1,7 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { makeStyles, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import CodeIcon from "@mui/icons-material/Code";
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import IconButton from "@mui/material/IconButton";
@@ -51,7 +51,7 @@ const Navbar = () => {
     handleClose();
   };
   const goAbout = () => {
-    window.location.href = "about/";
+    window.location.href = "/about";
     handleClose();
   };
   const goContact = () => {
