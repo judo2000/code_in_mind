@@ -16,6 +16,7 @@ import { Login } from "./components/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import { Signup } from "./components/Signup";
 import { CreateCourse } from "./components/CreateCourse";
+import Footer from "./components/Footer";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -78,6 +79,7 @@ function App() {
           </Route>
         </Routes>
       </Router>
+      <Footer />
     </ApolloProvider>
   );
 }

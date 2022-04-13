@@ -25,7 +25,7 @@ const Home = () => {
         <Box gridColumn="span 4">
           <Item>
             <img src="computer.png"
-            height="145" width="185" alt="computer"/>
+            height="345" width="685" alt="computer"/>
           </Item>
         </Box>
         <Box gridColumn="span 8">
