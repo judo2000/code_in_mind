@@ -9,18 +9,17 @@ import { CREATE_COURSE } from "../utils/mutations";
 export const CreateCourse = () => {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const user = jwt(token);
-  console.log(user.data.isAdmin)
+  console.log(user.data.isAdmin);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!token || !user.data.isAdmin) {
       navigate("/dashboard");
-    } 
+    }
   });
 
   const [addCourseMutation] = useMutation(CREATE_COURSE);
-  
 
   return (
     <Form
@@ -45,8 +44,17 @@ export const CreateCourse = () => {
           <div>
             <br />
             <br />
-            <h1>Course Title</h1>
-            <Field name="courseTitle" component="input" />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div>
+              <label for="courseTitle">Course Title</label>
+              <Field name="courseTitle" component="input" />
+            </div>
+
             <h1>Description</h1>
             <Field name="description" component="input" />
 

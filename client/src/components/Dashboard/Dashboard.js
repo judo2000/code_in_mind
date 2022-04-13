@@ -9,6 +9,9 @@ import { DROP_COURSE } from "../../utils/mutations";
 import Spinner from "../Progress";
 import "./dashboard.style.css";
 import Button from "@mui/material/Button";
+import PropTypes from "prop-types";
+import Box from "@mui/material/Box";
+import { Grid, Container } from "@mui/material/";
 
 const Dashboard = () => {
   // check if the user is logged in and has a valid token
@@ -41,15 +44,58 @@ const Dashboard = () => {
     navigate(path);
   };
 
+  function Item(props) {
+    const { sx, ...other } = props;
+    return (
+      <Box
+        sx={{
+          bgcolor: (theme) =>
+            theme.palette.mode === "dark" ? "#101010" : "#fff",
+          color: (theme) =>
+            theme.palette.mode === "dark" ? "grey.300" : "grey.800",
+          border: "1px solid",
+          borderColor: (theme) =>
+            theme.palette.mode === "dark" ? "grey.800" : "grey.300",
+          p: 1,
+          m: 1,
+          borderRadius: 2,
+          fontSize: "0.875rem",
+          fontWeight: "700",
+          ...sx,
+        }}
+        {...other}
+      />
+    );
+  }
+
+  Item.propTypes = {
+    sx: PropTypes.oneOfType([
+      PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+      ),
+      PropTypes.func,
+      PropTypes.object,
+    ]),
+  };
+
   function MyCourses() {
-    return enrolledCourses.length > 0 ? (
-      <div style={{ width: "100%" }}>
-        {enrolledCourses.map((course) => {
-          return (
-            <div key={course._id}>
+    return loading ? (
+      <Spinner />
+    ) : enrolledCourses.length > 0 ? (
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
+        {enrolledCourses.map((course) => (
+          <Grid item xs={12} sm={4} md={4} key={course._id}>
+            <Item color="secondary">
+              <h2>{course.courseTitle}</h2>
               <p>{course.courseTitle}</p>
-              <p>{course.courseTitle}</p>
-              <button
+              <Button
+                color="error"
+                variant="contained"
+                size="small"
                 onClick={() =>
                   dropMutation(
                     {
@@ -62,11 +108,11 @@ const Dashboard = () => {
                 }
               >
                 Drop Course
-              </button>
-            </div>
-          );
-        })}
-      </div>
+              </Button>
+            </Item>
+          </Grid>
+        ))}
+      </Grid>
     ) : (
       <h2>You are not enrolled in any courses.</h2>
     );
@@ -80,20 +126,28 @@ const Dashboard = () => {
     </div>
   ) : (
     <div className="main">
-      <h1>Dashboard</h1>
-      <h1>
-        Welcome {user.firstName} {user.lastName}
-      </h1>
-      <h2>My Courses</h2>
-      {user.isAdmin ? (
-        <a href={`/courses/create`}>
-          <Button>Add Course</Button>
-        </a>
-      ) : (
-        ""
-      )}
+      <Container maxWidth="sm">
+        <h1>Dashboard</h1>
+        <h1>
+          Welcome {user.firstName} {user.lastName}
+        </h1>
+        {user.isAdmin ? (
+          <Button
+            size="medium"
+            style={{ backgroundColor: "#8a2be2" }}
+            className="addButton"
+            variant="contained"
+            href="/courses/create"
+          >
+            Add Course
+          </Button>
+        ) : (
+          ""
+        )}
 
-      <MyCourses />
+        <h2>My Courses</h2>
+        <MyCourses />
+      </Container>
     </div>
   );
 };

@@ -35,7 +35,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addCourse: async (parent, args) => {
+    addCourse: async (parent, args, context) => {
       if (context.user) {
         const course = await Course.create(args);
         return course;
@@ -89,13 +89,12 @@ const resolvers = {
     deleteCourse: async (parent, { courseId }, context) => {
       if (context.user) {
         await User.updateMany(
-          
           { enrolledCourseIds: { $in: [courseId] } },
-        { $pull: { enrolledCourseIds: courseId }}
-        )
-        const course = await Course.findByIdAndDelete({ _id: courseId })
+          { $pull: { enrolledCourseIds: courseId } }
+        );
+        const course = await Course.findByIdAndDelete({ _id: courseId });
       }
-    }
+    },
   },
   User: {
     createdCourses: async (root) => {
