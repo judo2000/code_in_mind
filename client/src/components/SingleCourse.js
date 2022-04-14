@@ -18,7 +18,7 @@ const SingleCourse = () => {
 
   useEffect(() => {
     if (!token) {
-      navigate("/login");
+      return navigate("/login");
     }
   });
 
