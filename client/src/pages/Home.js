@@ -14,11 +14,11 @@ const Home = () => {
           <div className="left">
             <p>
               Code in Mind is a non-profit organization created to help
-              traumatic brain injury (TBI) servivors.
+              traumatic brain injury (TBI) survivors.
             </p>
 
             <p>
-              Inspired by one of our developers journey to learn to code to hel
+              Inspired by one of our developers journey to learn to code to help
               get his life back on track, we decided to start Code in Mind to
               teach individuals recovering from TBI to code.
             </p>
