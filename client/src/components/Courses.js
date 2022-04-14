@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { GET_COURSES } from "../utils/queries";
 import Spinner from "./Progress";
+import Auth from "../utils/auth";
 
 import * as React from "react";
 import PropTypes from "prop-types";
@@ -45,6 +46,11 @@ Item.propTypes = {
 export function GridTemplateColumns() {
   const { data, loading } = useQuery(GET_COURSES);
   const courseData = data?.courses || {};
+
+  //check if user is logged in
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  
+
   return loading ? (
     <Spinner />
   ) : (
@@ -63,7 +69,16 @@ export function GridTemplateColumns() {
               <p>{course.creator.firstName}</p>
               <p>{course.creator.lastName}</p>
               <p>{course.creator.email}</p>
-              <Button href={`/courses/${course._id}`}>View Course Info</Button>
+
+              {token ? (
+                <Button href={`/courses/${course._id}`}>
+                  View Course Info
+                </Button>
+              ) : (
+                <Button href={`/login`}>
+                  Login to see more
+                </Button>
+              )}
             </Item>
           </Grid>
         );

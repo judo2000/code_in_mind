@@ -1,6 +1,7 @@
 import jwt from "jwt-decode";
 import Auth from "../utils/auth";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
@@ -12,9 +13,18 @@ import Button from "@mui/material/Button";
 
 const SingleCourse = () => {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
-  const user = jwt(token);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  });
+
+  const user = jwt(token);
+
+  // if the user is not logged in redirect to login
 
   const routeChange = () => {
     let path = `/dashboard`;
