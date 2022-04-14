@@ -25,7 +25,6 @@ const resolvers = {
     },
     course: async (parent, { _id }) => {
       let course = await Course.findById(_id);
-      console.log(course);
       return course;
     },
   },
@@ -63,7 +62,6 @@ const resolvers = {
           );
           return user;
         } catch (error) {
-          console.log(error);
           return error;
         }
       }
@@ -79,7 +77,6 @@ const resolvers = {
           );
           return user;
         } catch (error) {
-          console.log(error);
           return error;
         }
       }

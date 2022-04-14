@@ -24,7 +24,7 @@ const SingleCourse = () => {
   const { loading, data } = useQuery(GET_COURSE, {
     variables: { _id: id },
   });
-  console.log(id);
+
   const course = data?.course || {};
 
   return loading ? (

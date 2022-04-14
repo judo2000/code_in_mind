@@ -6,6 +6,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { Container } from "@mui/material/";
 
 function Item(props) {
   const { sx, ...other } = props;
@@ -75,10 +76,10 @@ export function GridTemplateColumns() {
 
 const Courses = () => {
   return (
-    <div>
+    <Container style={{ marginTop: "8em" }}>
       <h1>Courses</h1>
       <GridTemplateColumns />
-    </div>
+    </Container>
   );
 };
 
