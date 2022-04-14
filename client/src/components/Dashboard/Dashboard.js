@@ -19,7 +19,6 @@ const Dashboard = () => {
 
   // if the user is not logged in redirect to login
   const navigate = useNavigate();
-  console.log(navigate, 20);
   useEffect(() => {
     if (!token) {
       navigate("/login");
@@ -27,9 +26,8 @@ const Dashboard = () => {
   });
   // checks for user if logged in
   const { loading, data } = useQuery(GET_ME);
-  console.log(data);
+
   const user = data?.me || {};
-  console.log(user, 26);
 
   const enrolledCourses = user.enrolledCourses;
 
@@ -79,7 +77,9 @@ const Dashboard = () => {
 
   function MyCourses() {
     return loading ? (
-      <Spinner />
+      <div style={{ paddingTop: "10px" }}>
+        <Spinner />
+      </div>
     ) : enrolledCourses.length > 0 ? (
       <Grid
         container
@@ -89,7 +89,7 @@ const Dashboard = () => {
         {enrolledCourses.map((course) => (
           <Grid item xs={12} sm={4} md={4} key={course._id}>
             <Item color="secondary">
-              <h2>{course.courseTitle}</h2>
+              <h3>{course.courseTitle}</h3>
               <p>{course.description}</p>
               <Button
                 color="error"
@@ -117,8 +117,6 @@ const Dashboard = () => {
     );
   }
 
-  console.log(enrolledCourses);
-  console.log(user, 47);
   return loading ? (
     <div>
       <Spinner />
@@ -135,12 +133,12 @@ const Dashboard = () => {
         maxWidth="sm"
       >
         <h1>Dashboard</h1>
-        <h1>
+        <h2>
           Welcome {user.firstName} {user.lastName}
-        </h1>
+        </h2>
         {user.isAdmin ? (
           <Button
-            size="medium"
+            size="small"
             style={{ backgroundColor: "#8a2be2" }}
             className="addButton"
             variant="contained"

@@ -10,7 +10,6 @@ import { Button } from "@mui/material";
 export const CreateCourse = () => {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const user = jwt(token);
-  console.log(user.data.isAdmin);
 
   const navigate = useNavigate();
 
@@ -30,7 +29,6 @@ export const CreateCourse = () => {
             ...values,
           },
           onCompleted: (data) => {
-            console.log(data);
             navigate("/courses");
           },
         });
@@ -44,7 +42,6 @@ export const CreateCourse = () => {
         return (
           <div
             style={{
-              marginTop: "8em",
               display: "flex",
               flexDirection: "column",
               margin: "0 auto",
@@ -61,7 +58,8 @@ export const CreateCourse = () => {
             <Field
               name="description"
               style={{ padding: ".5em" }}
-              component="input"
+              component="textarea"
+              rows="15"
             />
             <br />
             <br />

@@ -47,9 +47,7 @@ const Email = () => {
           setMessage("");
           setName("");
         },
-        (error) => {
-          console.log(error.text);
-        }
+        (error) => {}
       );
   };
 
