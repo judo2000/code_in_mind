@@ -1,122 +1,42 @@
-import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
-
-let mobile = false;
-if (window.innerWidth < 900) {
-  mobile = true;
-}
+import "./home.style.css";
+import { Container } from "@mui/material/";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 const Home = () => {
-  return mobile ? (
-    <Box sx={{ width: 1 }}>
-      <Typography
-        sx={{
-          fontSize: "3em",
-          marginTop: "1.5em",
-          textAlign: "center",
-        }}
-      >
-        Code in Mind
-      </Typography>
-      <Typography
-        sx={{
-          fontSize: "1.5em",
-          textAlign: "left",
-        }}
-      >
-        Code in Mind is a non-profit organization created to help traumatic
-        brain injury (TBI) survivors.
-      </Typography>
-      <Typography
-        sx={{
-          fontSize: "1.25em",
-          textAlign: "left",
-        }}
-      >
-        Inspired by one of our developer's journey to learn to code to help get
-        his life back on track, we decided to start Code in Mind to teach
-        individuals recovering from TBI to code.
-      </Typography>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Box
-          component="img"
-          src="computer.png"
-          sx={{
-            height: 115,
-            width: 228,
-            textAlign: "center",
-          }}
-          alt="computer"
-        ></Box>
-      </Box>
-      <Typography
-        sx={{
-          fontSize: "1.5em",
-          textAlign: "left",
-        }}
-      >
-        If you are recovering from a TBI and want to learn to code, you are in
-        the right place. <a href="/signup">Sign Up</a> now!
-      </Typography>
-    </Box>
-  ) : (
-    <Box sx={{ width: 1 }}>
-      <Typography
-        sx={{
-          fontSize: "3em",
-          marginTop: "1.5em",
-          textAlign: "center",
-        }}
-      >
-        Code in Mind
-      </Typography>
-      <Typography
-        sx={{
-          fontSize: "1.5em",
-          textAlign: "center",
-        }}
-      >
-        Code in Mind is a non-profit organization created to help traumatic
-        brain injury (TBI) survivors.
-      </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          margin: "0 auto",
-          paddingLeft: 67,
-          paddingRight: 67,
-        }}
-      >
-        <Box
-          component="img"
-          src="computer.png"
-          sx={{ height: 345, width: 685, textAlign: "center" }}
-          alt="computer"
-        ></Box>
-      </Box>
-      <Typography
-        sx={{
-          fontSize: "1.25em",
-          textAlign: "left",
-          paddingLeft: 45,
-          paddingRight: 45,
-        }}
-      >
-        Inspired by one of our developer's journey to learn to code to help get
-        his life back on track, we decided to start Code in Mind to teach
-        individuals recovering from TBI to code.
-      </Typography>
-      <Typography
-        sx={{
-          fontSize: "1.5em",
-          textAlign: "center",
-        }}
-      >
-        If you are recovering from a TBI and want to learn to code, you are in
-        the right place. <a href="/signup">Sign Up</a> now!
-      </Typography>
-    </Box>
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  console.log(isMobile);
+  return (
+    <Container style={{ marginTop: "2em" }}>
+      <div className="grid-container">
+        <div className="grid-container">
+          <div className="left">
+            <p>
+              Code in Mind is a non-profit organization created to help
+              traumatic brain injury (TBI) servivors.
+            </p>
+
+            <p>
+              Inspired by one of our developers journey to learn to code to hel
+              get his life back on track, we decided to start Code in Mind to
+              teach individuals recovering from TBI to code.
+            </p>
+            <p>
+              If you are recovering from a TBI and want to learn to code, you
+              are in the right place. Sign Up now!
+            </p>
+          </div>
+          {!isMobile ? (
+            <div className="right">
+              <img src="computer_tall.png" height="400" alt="computer" />
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      </div>
+    </Container>
   );
 };
 
