@@ -88,16 +88,6 @@ const Home = () => {
           paddingRight: 67,
         }}
       >
-        <Typography
-          sx={{
-            fontSize: "1.25em",
-            textAlign: "left",
-          }}
-        >
-          Inspired by one of our developer's journey to learn to code to help
-          get his life back on track, we decided to start Code in Mind to teach
-          individuals recovering from TBI to code.
-        </Typography>
         <Box
           component="img"
           src="computer.png"
@@ -105,6 +95,18 @@ const Home = () => {
           alt="computer"
         ></Box>
       </Box>
+      <Typography
+        sx={{
+          fontSize: "1.25em",
+          textAlign: "left",
+          paddingLeft: 45,
+          paddingRight: 45,
+        }}
+      >
+        Inspired by one of our developer's journey to learn to code to help get
+        his life back on track, we decided to start Code in Mind to teach
+        individuals recovering from TBI to code.
+      </Typography>
       <Typography
         sx={{
           fontSize: "1.5em",
