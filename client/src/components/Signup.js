@@ -2,7 +2,7 @@ import { Form, Field } from "react-final-form";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { ADD_USER } from "../utils/mutations";
-import { Container } from "@mui/material/";
+import { Container, Button } from "@mui/material/";
 
 export const Signup = () => {
   const [signupMutation] = useMutation(ADD_USER);
@@ -19,7 +19,7 @@ export const Signup = () => {
       }}
       maxWidth="sm"
     >
-      <h1>Sign Up</h1>
+      <h2>Sign Up</h2>
       <Form
         onSubmit={async (values) => {
           await signupMutation({
@@ -40,18 +40,34 @@ export const Signup = () => {
         }}
         render={({ values, handleSubmit, form }) => {
           return (
-            <div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <h2 style={{ margin: 0 }}>FirstName</h2>
+              <Field
+                name="firstName"
+                style={{ padding: ".5em", marginBottom: "1em" }}
+                component="input"
+              />
+              <h2 style={{ margin: 0 }}>Last Name</h2>
+              <Field
+                name="lastName"
+                style={{ padding: ".5em", marginBottom: "1em" }}
+                component="input"
+              />
+              <h2 style={{ margin: 0 }}>Email</h2>
+              <Field
+                style={{ padding: ".5em", marginBottom: "1em" }}
+                name="email"
+                component="input"
+              />
+              <h2 style={{ margin: 0 }}>Password</h2>
+              <Field
+                name="password"
+                style={{ padding: ".5em", marginBottom: "1em" }}
+                component="input"
+                type="password"
+              />
               <br />
-              <br />
-              <h1>FirstName</h1>
-              <Field name="firstName" component="input" />
-              <h1>Last Name</h1>
-              <Field name="lastName" component="input" />
-              <h1>Email</h1>
-              <Field name="email" component="input" />
-              <h1>Password</h1>
-              <Field name="password" component="input" type="password" />
-              <button
+              <Button
                 disabled={
                   values?.password?.length === 0 || values?.email?.length === 0
                 }
@@ -59,9 +75,10 @@ export const Signup = () => {
                   await handleSubmit();
                   form.reset();
                 }}
+                variant="contained"
               >
                 Submit
-              </button>
+              </Button>
             </div>
           );
         }}
