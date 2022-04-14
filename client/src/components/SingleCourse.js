@@ -1,3 +1,5 @@
+import jwt from "jwt-decode";
+import Auth from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
@@ -9,6 +11,9 @@ import Spinner from "./Progress";
 import Button from "@mui/material/Button";
 
 const SingleCourse = () => {
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const user = jwt(token);
+
   const navigate = useNavigate();
 
   const routeChange = () => {
@@ -61,23 +66,27 @@ const SingleCourse = () => {
       >
         Enroll In Course
       </Button>
-      <Button
-        color="error"
-        variant="contained"
-        sx={{ marginTop: "2em" }}
-        onClick={() =>
-          deleteMutation(
-            {
-              variables: {
-                courseId: id,
+      {course.creator._id === user.data._id ? (
+        <Button
+          color="error"
+          variant="contained"
+          sx={{ marginTop: "2em" }}
+          onClick={() =>
+            deleteMutation(
+              {
+                variables: {
+                  courseId: id,
+                },
               },
-            },
-            routeChange()
-          )
-        }
-      >
-        Delete Course
-      </Button>
+              routeChange()
+            )
+          }
+        >
+          Delete Course
+        </Button>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
