@@ -1,17 +1,8 @@
-.item1 {
-  grid-area: header;
-}
-.item2 {
-  grid-area: menu;
-}
-.item3 {
+.left {
   grid-area: main;
 }
-.item4 {
+.right {
   grid-area: right;
-}
-.item5 {
-  grid-area: footer;
 }
 
 .grid-container {

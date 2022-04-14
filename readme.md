@@ -24,7 +24,7 @@ This is a full stack app using the MERN stack along with Graphql. Admin users ca
 ## Installation Instructions
 
   <ul>
-    <li>Clone this repo by entering the folling command from the command prompt: <code>https://github.com/judo2000/crypto-cocktails.git</code></li><li>Change into the new director: <code>cd code-in-mind</code></li>
+    <li>Clone this repo by entering the folling command from the command prompt: <code>https://github.com/judo2000/code_in_mind.git</code></li><li>Change into the new director: <code>cd code-in-mind</code></li>
     <li>From the command prompt, enter: <code>npm i</code> to install all necessary packages</li>
     <li>To create an admin account you can do one of the following:
       <ul>
