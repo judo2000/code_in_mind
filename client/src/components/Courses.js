@@ -6,7 +6,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { Container } from "@mui/material/";
+import { Grid, Container } from "@mui/material/";
 
 function Item(props) {
   const { sx, ...other } = props;
@@ -48,17 +48,15 @@ export function GridTemplateColumns() {
   return loading ? (
     <Spinner />
   ) : (
-    <div style={{ width: "100%" }}>
-      <Box
-        sx={{
-          display: "grid",
-          marginTop: "2em",
-          gridTemplateColumns: "repeat(3, 1fr)",
-        }}
-      >
-        {courseData.map((course) => {
-          return (
-            <Item key={course._id}>
+    <Grid
+      container
+      spacing={{ xs: 2, md: 3 }}
+      columns={{ xs: 4, sm: 8, md: 12 }}
+    >
+      {courseData.map((course) => {
+        return (
+          <Grid item xs={12} sm={4} md={4} key={course._id}>
+            <Item>
               <h1>{course.courseTitle}</h1>
               <h2>{course.description}</h2>
               <h3>Creator</h3>
@@ -67,16 +65,24 @@ export function GridTemplateColumns() {
               <p>{course.creator.email}</p>
               <Button href={`/courses/${course._id}`}>View Course Info</Button>
             </Item>
-          );
-        })}
-      </Box>
-    </div>
+          </Grid>
+        );
+      })}
+    </Grid>
   );
 }
 
 const Courses = () => {
   return (
-    <Container style={{ marginTop: "8em" }}>
+    <Container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        marginTop: "6em",
+      }}
+    >
       <h1>Courses</h1>
       <GridTemplateColumns />
     </Container>
