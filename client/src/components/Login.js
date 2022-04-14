@@ -40,12 +40,29 @@ export const Login = () => {
         }}
         render={({ values, handleSubmit, form }) => {
           return (
-            <div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                margin: "0 auto",
+                width: "33%",
+              }}
+            >
               <h1>Email</h1>
-              <Field name="email" component="input" />
+              <Field
+                name="email"
+                style={{ padding: ".5em" }}
+                component="input"
+              />
               <h1>Password</h1>
-              <Field name="password" component="input" type="password" />
+              <Field
+                name="password"
+                style={{ padding: ".5em" }}
+                component="input"
+                type="password"
+              />
               <Button
+                sx={{ marginTop: "2em" }}
                 disabled={
                   values?.password?.length === 0 || values?.email?.length === 0
                 }
