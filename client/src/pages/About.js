@@ -25,7 +25,7 @@ const About = () => {
             name="Stephen Moore"
             github="https://github.com/judo2000"
             linkedin="https://www.linkedin.com/in/stephen-scott-moore/"
-            summary="My name is Stephen Moore. I am a full stack web developer with previous experience in HTML, CSS, and Classic ASP. I was completely self-taught but have recently earned a Certificate in Full Stack Web Development from the University of Denver coding bootcamp. I am very passionate about web development and I am excited to combine my experience with my new skills to provide excellent experiences for the web.
+            summary="Stephen Moore is a full stack web developer with previous experience in HTML, CSS, and Classic ASP. I was completely self-taught but have recently earned a Certificate in Full Stack Web Development from the University of Denver coding bootcamp. I am very passionate about web development and I am excited to combine my experience with my new skills to provide excellent experiences for the web.
 My other passion in life is judo. I have practiced judo for just over 33 years. I hold the rank of 6th degree black belt and am the head instructor along with my wife at Denver Judo. I am also a former World and Paralympic champion and have been the head coach of the USA Paralympic Judo Team since 2010."
           />
         </Grid>
